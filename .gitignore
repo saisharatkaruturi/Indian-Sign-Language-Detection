@@ -1,0 +1,72 @@
+# Python & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+tensorflow-env/
+mediapipe-env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data & Datasets
+/Dataset/
+/Dataset_cropped/
+/Dataset.zip
+Sample Videos.zip
+/Video_Dataset/
+*.csv
+!dynamic_video_splits.csv
+!evaluation_results/dynamic_oneshot/*.csv
+!evaluation_results/dynamic_trained/*.csv
+!evaluation_results/live_tests/*.csv
+
+# Model Weights & Artifacts
+*.h5
+*.hdf5
+*.keras
+*.pth
+*.pt
+*.onnx
+*.pb
+
+# IDEs & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Output & Logs
+analysis_output/
+*.log
+ISL_Complete_Project_Source_and_Notebooks.zip 
+
+# Project virtual environment
+.venv/
+
+# Cached video features (derived, regenerable)
+features/
+
+# Shipped model artifacts required to run the app
+!models/dynamic/dynamic_model.keras
+
+# Local live-test results (generated per run)
+evaluation_results/live_tests/

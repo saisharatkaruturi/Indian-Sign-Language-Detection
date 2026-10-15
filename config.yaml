@@ -1,0 +1,46 @@
+# ISL Recognition System Central Configuration
+
+camera:
+  index: 0
+  width: 640
+  height: 480
+  fps: 30
+
+preprocessing:
+  image_width: 224
+  image_height: 224
+  channels: 3
+  normalization: true
+
+dynamic:
+  sequence_length: 16          # frames per clip (T=16); stored in the one-shot gallery
+  inference_interval: 3
+  live_method: trained         # trained (Bi-GRU, 61 signs; 139/140 held-out) | oneshot (61 signs, 24.2% top-1)
+  oneshot_gallery: models/dynamic_oneshot/gallery.npz
+  live_window_seconds: 4.0     # live webcam clip length matched against the gallery
+  live_match_every_seconds: 1.0
+
+model:
+  backbone: CustomCNN
+  temporal_model: GRU  # Switchable: GRU or LSTM
+
+inference:
+  confidence_threshold: 0.40
+  smoothing: true
+  smoothing_window_size: 5
+
+training:
+  batch_size: 32
+  epochs: 30
+  learning_rate: 0.001
+  seed: 42
+
+actions:                       # hold a static sign to open an app/website (http(s):// or whatsapp: only)
+  enabled: true
+  hold_seconds: 1.0
+  cooldown_seconds: 5.0
+  min_confidence: 0.70
+  signs:
+    W: {name: WhatsApp, url: "https://web.whatsapp.com"}
+    Y: {name: YouTube, url: "https://www.youtube.com"}
+    L: {name: Google, url: "https://www.google.com"}
